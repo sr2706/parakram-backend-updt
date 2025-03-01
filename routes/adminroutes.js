@@ -5,7 +5,8 @@ const {
   getPlayersBySport, 
   getPaymentDetails, 
   getDashboardStats,
-  getPaymentScreenshotByTeam 
+  getPaymentScreenshotByTeam, 
+  getTeamsBySport
 } = require('../controllers/adminController');
 const { protect } = require('../middlewares/auth');
 
@@ -19,6 +20,7 @@ router.get('/players', getAllPlayers);
 router.get('/players/sport/:sport', getPlayersBySport);
 router.get('/payments', getPaymentDetails);
 router.get('/dashboard', getDashboardStats);
+router.get('/teams/sport/:sport',getTeamsBySport);
 router.get('/payments/team/:teamId/screenshot', getPaymentScreenshotByTeam);
 
 module.exports = router;
