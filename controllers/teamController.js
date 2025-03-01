@@ -30,7 +30,7 @@ const registerTeam = async (req, res) => {
         collegeName: playerData.collegeName,
         sportName: playerData.sportName,
         email: playerData.email || null,
-        idCardPicture: playerData.idCardPicture || null,
+        idCardPicture: playerData.idCardLink || null,
         team: team._id
       });
       
