@@ -48,7 +48,7 @@ const generatePDF = async (teamData, playerData, paymentData) => {
         const accommodationPrice = player.accommodationPrice || 
           (player.accommodation && player.accommodation.price ? player.accommodation.price : 0);
 
-        doc.text(`Accommodation: ${accommodationType} (₹${accommodationPrice})`);
+        doc.text(`Accommodation: ${accommodationType} (Rs. ${accommodationPrice})`);
         doc.moveDown(0.5);
       });
 
@@ -56,8 +56,9 @@ const generatePDF = async (teamData, playerData, paymentData) => {
       doc.moveDown();
       doc.fontSize(14).text('Payment Information', { underline: true });
       doc.fontSize(12).text(`Transaction ID: ${paymentData.transactionId}`);
-      doc.text(`Amount Paid: ₹${paymentData.amountPaid}`);
+      doc.text(`Amount Paid: Rs. ${paymentData.amountPaid}`);
       doc.text(`Payment Date: ${paymentData.paymentDate.toLocaleDateString()}`);
+      doc.text(`Payment Screenshot: ${paymentData.paymentScreenshot.url}`);
 
       // Finalize the PDF
       doc.end();
