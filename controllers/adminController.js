@@ -150,6 +150,30 @@ const getDashboardStats = async (req, res) => {
   }
 };
 
+const getTeamsBySport = async (req, res) => {
+  try {
+    const { sport } = req.params;
+    
+    const teams = await Team.find({ sportName: sport })
+      .populate('players')
+      .populate('payment');
+    
+    res.status(200).json({
+      success: true,
+      count: teams.length,
+      data: teams
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error',
+      error: error.message
+    });
+  }
+};
+
+
 const getPaymentScreenshotByTeam = async (req, res) => {
   try {
     const { teamId } = req.params;
@@ -187,5 +211,6 @@ module.exports = {
   getPlayersBySport,
   getPaymentDetails,
   getDashboardStats,
-  getPaymentScreenshotByTeam
+  getPaymentScreenshotByTeam,
+  getTeamsBySport
 };
