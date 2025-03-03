@@ -49,6 +49,7 @@ const generatePDF = async (teamData, playerData, paymentData) => {
           (player.accommodation && player.accommodation.price ? player.accommodation.price : 0);
 
         doc.text(`Accommodation: ${accommodationType} (Rs. ${accommodationPrice})`);
+        doc.text(`T-shirt/Jacket Size: ${player.tshirtSize || 'NA'}`);
         doc.moveDown(0.5);
       });
 
