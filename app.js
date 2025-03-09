@@ -30,7 +30,7 @@ app.use('/api/pdf', require('./routes/pdfRoutes'));
 
 // Root route
 app.get("/", (req, res) => {
-  res.send("API is running... by parakram ");
+  res.send("API is running... by parakram - v03");
 });
 
 module.exports = app;
