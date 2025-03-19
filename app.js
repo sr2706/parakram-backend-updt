@@ -12,8 +12,7 @@ connectDB();
 // Initialize app
 const app = express();
 app.use(cors({
-  origin: '*', // Or specify allowed origins
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: 'https://parakram25-iitism.in', 
   credentials: true
 }));
 // Middleware
@@ -26,15 +25,16 @@ app.use(express.static(path.join(__dirname, "public")));
 // Mount routes
 app.use("/api/teams", require("./routes/teamroutes"));
 app.use("/api/accommodation", require("./routes/accommodationroutes"));
-app.use("/api/payments", require("./routes/paymentroutes"));
+// app.use("/api/payments", require("./routes/paymentroutes"));
 app.use("/api/admin", require("./routes/adminroutes"));
 app.use("/api/auth", require("./routes/authroutes"));
 // In app.js, add this with the other routes
 app.use('/api/pdf', require('./routes/pdfRoutes'));
 
+
 // Root route
 app.get("/", (req, res) => {
-  res.send("API is running... by parakram ");
+  res.send("API is running... by parakram - v05");
 });
 
 module.exports = app;
